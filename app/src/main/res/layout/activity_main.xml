@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:id="@+id/imageView"
         android:src="@drawable/background"
-        android:layout_above="@+id/button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
@@ -33,11 +32,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Find Restaurants"
-        android:id="@+id/button"
+        android:id="@+id/findRestaurantsButton"
         android:background="@color/colorAccent"
         android:textColor="@color/colorTextIcons"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_above="@+id/findRestaurantsButton"
+        android:layout_centerHorizontal="true"
+        android:inputType="phone"
+        android:hint="enter zip"
+        android:background="@color/background_floating_material_light"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp" />
 
 
 </RelativeLayout>
