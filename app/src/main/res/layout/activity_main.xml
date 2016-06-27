@@ -20,13 +20,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Restuarants"
+        android:text="MyRestaurants"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:textColor="@color/colorTextIcons"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:id="@+id/appNameTextView"/>
 
     <Button
         android:layout_width="match_parent"
@@ -44,7 +45,6 @@
         android:id="@+id/editText"
         android:layout_above="@+id/findRestaurantsButton"
         android:layout_centerHorizontal="true"
-        android:inputType="phone"
         android:hint="enter zip"
         android:background="@color/background_floating_material_light"
         android:padding="5dp"
