@@ -29,7 +29,7 @@ public class MainActivityInstrumentationTest {
         onView(withId(R.id.editText)).perform(typeText(location));
         onView(withId(R.id.findRestaurantsButton)).perform(click());
         onView(withId(R.id.textView)).check(matches
-                (withText("Here are all the restaurants near: " + location)));
+                (withText("here are all the restaurants near: " + location)));
     }
 
 }
