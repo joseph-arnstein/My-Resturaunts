@@ -4,7 +4,7 @@
 
 ## description
 
-MyResturaunts is a project from the Epicodus Android course designed as a learning tool developed over the course of the 5-week class by the author with istruction from Epicodus course insructors and contributions from various peers.
+MyResturaunts is a project from the Epicodus Android course designed as a learning tool developed over the course of the 5-week class by the author with instruction from Epicodus course insructors and contributions from various peers.
 
 ## Installation Instructions
 
