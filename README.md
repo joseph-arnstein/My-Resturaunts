@@ -19,7 +19,7 @@ MyResturaunts is a project from the Epicodus Android course designed as a learni
 * Espresso
 * Robolectric
 
-### License
+## License
 
 Licensed under the GPL.
 
