@@ -1,4 +1,7 @@
-package com.breakstuff.myrestaurants;
+package com.breakstuff.myrestaurants.services;
+
+import com.breakstuff.myrestaurants.Constants;
+import com.breakstuff.myrestaurants.models.Restuarant;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.breakstuff.myrestaurants;
+package com.breakstuff.myrestaurants.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.breakstuff.myrestaurants.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

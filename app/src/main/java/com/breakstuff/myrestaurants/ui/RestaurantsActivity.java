@@ -1,4 +1,4 @@
-package com.breakstuff.myrestaurants;
+package com.breakstuff.myrestaurants.ui;
 
 
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.breakstuff.myrestaurants.R;
+import com.breakstuff.myrestaurants.models.Restuarant;
+import com.breakstuff.myrestaurants.services.YelpServices;
 
 import java.io.IOException;
 import java.util.ArrayList;

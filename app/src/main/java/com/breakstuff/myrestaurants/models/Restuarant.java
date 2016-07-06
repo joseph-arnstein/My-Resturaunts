@@ -1,4 +1,4 @@
-package com.breakstuff.myrestaurants;
+package com.breakstuff.myrestaurants.models;
 
 import java.util.ArrayList;
 
