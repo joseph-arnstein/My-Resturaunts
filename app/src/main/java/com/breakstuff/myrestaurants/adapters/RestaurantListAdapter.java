@@ -1,5 +1,6 @@
 package com.breakstuff.myrestaurants.adapters;
 
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.breakstuff.myrestaurants.R;
-import com.breakstuff.myrestaurants.models.Restuarant;
+import com.breakstuff.myrestaurants.models.Restaurant;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -17,10 +19,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
-    private ArrayList<Restuarant> mRestaurants = new ArrayList<>();
+    private ArrayList<Restaurant> mRestaurants = new ArrayList<>();
     private Context mContext;
 
-    public RestaurantListAdapter(Context context, ArrayList<Restuarant> restaurants) {
+    public RestaurantListAdapter(Context context, ArrayList<Restaurant> restaurants) {
         mContext = context;
         mRestaurants = restaurants;
     }
@@ -42,14 +44,13 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         return mRestaurants.size();
     }
 
-
     public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.restaurantImageView) ImageView mRestaurantImageView;
         @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
         @Bind(R.id.categoryTextView) TextView mCategoryTextView;
         @Bind(R.id.ratingTextView) TextView mRatingTextView;
-
         private Context mContext;
+
 
         public RestaurantViewHolder(View itemView) {
             super(itemView);
@@ -57,7 +58,8 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             mContext = itemView.getContext();
         }
 
-        public void bindRestaurant(Restuarant restaurant) {
+        public void bindRestaurant(Restaurant restaurant) {
+            Picasso.with(mContext).load(restaurant.getImageUrl()).into(mRestaurantImageView);
             mNameTextView.setText(restaurant.getName());
             mCategoryTextView.setText(restaurant.getCategories().get(0));
             mRatingTextView.setText("Rating: " + restaurant.getRating() + "/5");

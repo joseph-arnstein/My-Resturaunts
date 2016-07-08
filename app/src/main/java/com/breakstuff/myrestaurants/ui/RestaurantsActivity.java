@@ -6,17 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.breakstuff.myrestaurants.R;
 import com.breakstuff.myrestaurants.adapters.RestaurantListAdapter;
-import com.breakstuff.myrestaurants.models.Restuarant;
+import com.breakstuff.myrestaurants.models.Restaurant;
 import com.breakstuff.myrestaurants.services.YelpServices;
 
 import java.io.IOException;
@@ -35,7 +28,7 @@ public class RestaurantsActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     private RestaurantListAdapter mAdapter;
 
-    public ArrayList<Restuarant> mRestaurants = new ArrayList<>();
+    public ArrayList<Restaurant> mRestaurants = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,7 +1,7 @@
 package com.breakstuff.myrestaurants.services;
 
 import com.breakstuff.myrestaurants.Constants;
-import com.breakstuff.myrestaurants.models.Restuarant;
+import com.breakstuff.myrestaurants.models.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,8 +44,8 @@ public class YelpServices {
         call.enqueue(callback);
     }
 
-    public ArrayList<Restuarant> processResults(Response response) {
-        ArrayList<Restuarant> restaurants = new ArrayList<>();
+    public ArrayList<Restaurant> processResults(Response response) {
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
@@ -76,7 +76,7 @@ public class YelpServices {
                     for (int y = 0; y < categoriesJSON.length(); y++) {
                         categories.add(categoriesJSON.getJSONArray(y).get(0).toString());
                     }
-                    Restuarant restaurant = new Restuarant(name, phone, website, rating,
+                    Restaurant restaurant = new Restaurant(name, phone, website, rating,
                             imageUrl, address, latitude, longitude, categories);
                     restaurants.add(restaurant);
                 }
