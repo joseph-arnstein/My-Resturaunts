@@ -26,8 +26,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RestaurantListActivity extends AppCompatActivity {
-    private SharedPreferences mSharedPreferences;
-    private String mRecentAddress;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
 
     public static final String TAG = RestaurantListActivity.class.getSimpleName();
 
@@ -43,14 +43,16 @@ public class RestaurantListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-//        String location = intent.getStringExtra("location");
+        String location = intent.getStringExtra("location");
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        Log.d("Shared Pref Location", mRecentAddress);
-        if (mRecentAddress != null) {
-            getRestaurants(mRecentAddress);
-        }
+        getRestaurants(location);
+
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        Log.d("Shared Pref Location", mRecentAddress);
+//        if (mRecentAddress != null) {
+//            getRestaurants(mRecentAddress);
+//        }
     }
 
     private void getRestaurants(String location) {
