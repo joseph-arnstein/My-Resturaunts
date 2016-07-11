@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RestaurantListActivity" />
-        <activity android:name=".ui.RestaurantDetailActivity"></activity>
+        <activity android:name=".ui.RestaurantDetailActivity" />
+        <activity android:name=".ui.SavedRestaurantListActivity"></activity>
     </application>
 
 </manifest>
