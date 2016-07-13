@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.breakstuff.myrestaurants.Constants;
 import com.breakstuff.myrestaurants.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedLocationReference;
     private ValueEventListener mSearchedLocationReferenceListener;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
     @Bind(R.id.editText) EditText mLocationEditText;
@@ -43,6 +47,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);//use the following layout file
+        ButterKnife.bind(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                //display welcome message
+            }
+        };
+
+        Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-sans/ostrich-regular.ttf");
+        mAppNameTextView.setTypeface(ostrichFont);
+
+        mFindRestaurantsButton.setOnClickListener(this);
+        mSavedRestaurantsButton.setOnClickListener(this);
+
         mSearchedLocationReference = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
 
         mSearchedLocationReferenceListener = mSearchedLocationReference.addValueEventListener(new ValueEventListener() {
@@ -61,18 +86,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);//use the following layout file
-        ButterKnife.bind(this);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                } else {
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
-
-        Typeface ostrichFont = Typeface.createFromAsset(getAssets(), "fonts/ostrich-sans/ostrich-regular.ttf");
-        mAppNameTextView.setTypeface(ostrichFont);
-
-        mFindRestaurantsButton.setOnClickListener(this);
-        mSavedRestaurantsButton.setOnClickListener(this);
+                }
+            }
+        };
     }
 
     @Override
@@ -100,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void saveLocationToFirebase(String location) {
         mSearchedLocationReference.push().setValue(location);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -131,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
     }
+
 
 //    private void addToSharedPreferences(String location) {
 //        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
